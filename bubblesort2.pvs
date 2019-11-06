@@ -49,17 +49,12 @@ IF n = 0 THEN
 	(l,count)
 ELSIF car(l) > car(cdr(l)) THEN LET aux = bubbling_count(cons(car(l),cdr(cdr(l))), count, n-1) IN  
 	(
-		cons(
-			car(cdr(l)), aux`1
-		),
+		cons(car(cdr(l)), aux`1),
 		aux`2 + 1
-		
 	)
 ELSE LET aux = bubbling_count(cdr(l), count, n-1) IN
 	(
-		cons(
-			car(l), aux`1
-		),
+		cons(car(l), aux`1),
 		aux`2 + 1
 	)
 ENDIF
@@ -81,7 +76,15 @@ bubblesort_is_quadratic: LEMMA
 			 	member(LAMBDA(n:nat): bubblesort_count(l)`2, Omicron(LAMBDA(n:nat):length(l)^2 ))
 
 bubbling_is_linear: LEMMA
-		    FORALL (l:list[nat])(n:nat)(c:nat):
+		    FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
 		    	   bubbling_count(l,c,n)`2 <= c + length(l)
+
+bubbling_compares_n: LEMMA
+		     FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
+		     	    bubbling_count(l,c,n)`2 = c + n
+
+bubbling_aux_is_quadratic: LEMMA
+			   FORALL (lc:[list[nat],nat]) (n:below[lc`1`length]):
+			   	  bubblesort_aux_count(lc,n)`2 <= lc`2 + length(lc`1)^2
 
 END bubblesort
