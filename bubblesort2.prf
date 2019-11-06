@@ -1,0 +1,56 @@
+(|bubblesort|
+ (|bubbling_TCC1| 0
+  (|bubbling_TCC1-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL) NIL NIL))
+ (|bubbling_TCC2| 0
+  (|bubbling_TCC2-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL) NIL NIL))
+ (|bubbling_TCC3| 0
+  (|bubbling_TCC3-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL) NIL NIL))
+ (|bubbling_TCC4| 0
+  (|bubbling_TCC4-1| NIL 3781979208 ("" (TERMINATION-TCC) NIL NIL) NIL NIL))
+ (|bubbling_TCC5| 0
+  (|bubbling_TCC5-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL) NIL NIL))
+ (|bubbling_TCC6| 0
+  (|bubbling_TCC6-1| NIL 3781979208 ("" (TERMINATION-TCC) NIL NIL) NIL NIL))
+ (|bubblesort_aux_TCC1| 0
+  (|bubblesort_aux_TCC1-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL) NIL NIL))
+ (|bubblesort_aux_TCC2| 0
+  (|bubblesort_aux_TCC2-1| NIL 3781979208 ("" (TERMINATION-TCC) NIL NIL) NIL
+   NIL))
+ (|bubblesort_TCC1| 0
+  (|bubblesort_TCC1-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL) NIL NIL))
+ (|bubblesort_aux_count_TCC1| 0
+  (|bubblesort_aux_count_TCC1-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL) NIL
+   NIL))
+ (|bubblesort_aux_count_TCC2| 0
+  (|bubblesort_aux_count_TCC2-1| NIL 3781979208 ("" (TERMINATION-TCC) NIL NIL)
+   NIL NIL))
+ (|bubblesort_is_quadratic_TCC1| 0
+  (|bubblesort_is_quadratic_TCC1-1| NIL 3781979208 ("" (SUBTYPE-TCC) NIL NIL)
+   NIL NIL))
+ (|bubblesort_is_quadratic| 0
+  (|bubblesort_is_quadratic-1| NIL 3781979211
+   ("" (INDUCT "l")
+    (("1" (EXPAND "member")
+      (("1" (EXPAND "Omicron")
+        (("1" (EXPAND "length")
+          (("1" (EXPAND "bubblesort_count")
+            (("1" (ASSERT) (("1" (GRIND) NIL NIL)) NIL)) NIL))
+          NIL))
+        NIL))
+      NIL)
+     ("2" (SKEEP)
+      (("2" (EXPAND "bubblesort_count" 1) (("2" (POSTPONE) NIL NIL)) NIL))
+      NIL))
+    NIL)
+   NIL SHOSTAK))
+ (|bubbling_is_linear_TCC1| 0
+  (|bubbling_is_linear_TCC1-1| NIL 3781986426 ("" (SUBTYPE-TCC) NIL NIL) NIL
+   NIL))
+ (|bubbling_is_linear| 0
+  (|bubbling_is_linear-1| NIL 3781986520
+   ("" (INDUCT "l")
+    (("1" (EXPAND "length") (("1" (POSTPONE) NIL NIL)) NIL)
+     ("2" (POSTPONE) NIL NIL) ("3" (POSTPONE) NIL NIL))
+    NIL)
+   NIL SHOSTAK)))
+

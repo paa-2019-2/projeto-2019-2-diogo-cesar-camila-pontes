@@ -7,7 +7,8 @@
 bubblesort : THEORY
 BEGIN
 
-IMPORTING   sorting 
+IMPORTING   sorting
+IMPORTING complexity
 
 l,l1,l2 : VAR list[nat]
 i,j,k,n : VAR nat
@@ -46,24 +47,20 @@ ENDIF
 bubbling_count(l:list[nat], count:nat, (n:below[l`length])) : RECURSIVE  [list[nat],nat] =
 IF n = 0 THEN
 	(l,count)
-ELSIF car(l) > car(cdr(l)) THEN
+ELSIF car(l) > car(cdr(l)) THEN LET aux = bubbling_count(cons(car(l),cdr(cdr(l))), count, n-1) IN  
 	(
 		cons(
-			car(cdr(l)),
-			bubbling_count(
-				cons(car(l), cdr(cdr(l))),
-				count,
-				n-1
-			)`1
+			car(cdr(l)), aux`1
 		),
-		count+1
+		aux`2 + 1
+		
 	)
-ELSE
+ELSE LET aux = bubbling_count(cdr(l), count, n-1) IN
 	(
 		cons(
-			car(l), bubbling_count(cdr(l), count, n-1)`1
+			car(l), aux`1
 		),
-		count+1
+		aux`2 + 1
 	)
 ENDIF
 MEASURE n
@@ -79,5 +76,12 @@ IF null?(l) THEN (l,0)
 ELSE bubblesort_aux_count((l, 0), l`length-1)
 ENDIF
 
+bubblesort_is_quadratic: LEMMA
+			 FORALL (l:list[nat]):
+			 	member(LAMBDA(n:nat): bubblesort_count(l)`2, Omicron(LAMBDA(n:nat):length(l)^2 ))
+
+bubbling_is_linear: LEMMA
+		    FORALL (l:list[nat])(n:nat)(c:nat):
+		    	   bubbling_count(l,c,n)`2 <= c + length(l)
 
 END bubblesort
