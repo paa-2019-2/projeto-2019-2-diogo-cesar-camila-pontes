@@ -41,7 +41,7 @@ ENDIF
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Last modification: 
+%%% COUNTING
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 bubbling_count(l:list[nat], count:nat, (n:below[l`length])) : RECURSIVE  [list[nat],nat] =
@@ -71,20 +71,50 @@ IF null?(l) THEN (l,0)
 ELSE bubblesort_aux_count((l, 0), l`length-1)
 ENDIF
 
-bubblesort_is_quadratic: LEMMA
-			 FORALL (l:list[nat]):
-			 	member(LAMBDA(n:nat): bubblesort_count(l)`2, Omicron(LAMBDA(n:nat):length(l)^2 ))
 
-bubbling_is_linear: LEMMA
-		    FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
-		    	   bubbling_count(l,c,n)`2 <= c + length(l)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% EQUIV
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-bubbling_compares_n: LEMMA
-		     FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
-		     	    bubbling_count(l,c,n)`2 = c + n
 
-bubbling_aux_is_quadratic: LEMMA
-			   FORALL (lc:[list[nat],nat]) (n:below[lc`1`length]):
-			   	  bubblesort_aux_count(lc,n)`2 <= lc`2 + length(lc`1)^2
+%insert_cinsert_equiv: LEMMA
+%		      FORALL (x, n:nat) (l:list[nat]):
+%		     	    insert(x,l) = cinsert(x, (l,n))`1
+
+bubbling_equiv: LEMMA
+	FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
+		bubbling(l,n) = bubbling_count(l,c,n)`1
+
+
+bubblesort_aux_equiv: LEMMA
+	FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
+		bubblesort_aux(l,n) = bubblesort_aux_count((l,c),n)`1
+
+
+bubblesort_equiv: LEMMA
+	FORALL (l:list[nat]):
+		bubblesort(l) = bubblesort_count(l)`1
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COMPLEXITY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%bubblesort_is_quadratic: LEMMA
+%			 FORALL (l:list[nat]):
+%			 	member(LAMBDA(n:nat): bubblesort_count(l)`2, Omicron(LAMBDA(n:nat):length(l)^2 %))
+
+%bubbling_is_linear: LEMMA
+%		    FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
+%		    	   bubbling_count(l,c,n)`2 <= c + length(l)
+%
+%bubbling_compares_n: LEMMA
+%		     FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
+%		     	    bubbling_count(l,c,n)`2 = c + n
+%
+%bubbling_aux_is_quadratic: LEMMA
+%			   FORALL (lc:[list[nat],nat]) (n:below[lc`1`length]):
+%			   	  bubblesort_aux_count(lc,n)`2 <= lc`2 + length(lc`1)^2
 
 END bubblesort
