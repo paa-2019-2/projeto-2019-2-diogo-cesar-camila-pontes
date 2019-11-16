@@ -29,8 +29,24 @@
   (bubblesort_aux_count_TCC2-1 nil 3781979208
    ("" (termination-tcc) nil nil) nil nil))
  (bubbling_equiv 0
-  (bubbling_equiv-1 nil 3782581648 ("" (postpone) nil nil) nil
-   shostak))
+  (bubbling_equiv-1 nil 3782581648
+   ("" (induct "l")
+    (("1" (skeep)
+      (("1" (skeep)
+        (("1" (expand "bubbling")
+          (("1" (expand "bubbling_count")
+            (("1" (lift-if)
+              (("1" (prop)
+                (("1" (postpone) nil nil) ("2" (postpone) nil nil))
+                nil))
+              nil))
+            nil))
+          nil))
+        nil))
+      nil)
+     ("2" (postpone) nil nil))
+    nil)
+   nil shostak))
  (bubblesort_aux_equiv 0
   (bubblesort_aux_equiv-1 nil 3782583347
    ("" (induct "l")
