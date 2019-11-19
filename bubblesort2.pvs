@@ -47,15 +47,15 @@ ENDIF
 bubbling_count(l:list[nat], count:nat, (n:below[l`length])) : RECURSIVE  [list[nat],nat] =
 IF n = 0 THEN
 	(l,count)
-ELSIF car(l) > car(cdr(l)) THEN LET aux = bubbling_count(cons(car(l),cdr(cdr(l))), count, n-1) IN  
+ELSIF car(l) > car(cdr(l)) THEN LET aux = bubbling_count(cons(car(l),cdr(cdr(l))), count+1, n-1) IN  
 	(
 		cons(car(cdr(l)), aux`1),
-		aux`2 + 1
+		aux`2
 	)
-ELSE LET aux = bubbling_count(cdr(l), count, n-1) IN
+ELSE LET aux = bubbling_count(cdr(l), count+1, n-1) IN
 	(
 		cons(car(l), aux`1),
-		aux`2 + 1
+		aux`2
 	)
 ENDIF
 MEASURE n
@@ -100,6 +100,19 @@ bubblesort_equiv: LEMMA
 %%% COMPLEXITY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+bubbling_lk: LEMMA
+	     FORALL (l:list[nat]) (k:list[nat]) (n:nat | n < l`length) (c:nat):
+		    bubbling_count(l, c, n)`2 = bubbling_count(k, c, n)`2
+
+bubbling_lx: LEMMA
+	     FORALL (l:list[nat]) (x:nat) (n:below[l`length]) (c:nat):
+	     	   bubbling_count(l, c, n)`2 = bubbling_count(cons(x, cdr(l)), c, n)`2
+
+
+bubbling_counts_to_n: LEMMA
+		      FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
+		      	     bubbling_count(l, c, n)`2 = c + n
 
 %bubblesort_is_quadratic: LEMMA
 %			 FORALL (l:list[nat]):
