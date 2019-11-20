@@ -100,19 +100,6 @@ bubblesort_equiv: LEMMA
 %%% COMPLEXITY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%bubbling_lk: LEMMA
-%	     FORALL (l:list[nat]) (k:list[nat]) (n:nat | n < l`length) (c:nat):
-%		    bubbling_count(l, c, n)`2 = bubbling_count(k, c, n)`2
-
-bubbling_lx: LEMMA
-	     FORALL (l:list[nat]) (x:nat) (n:below[l`length]) (c:nat):
-	     	    bubbling_count(l, c, n)`2 = bubbling_count(cons(x, cdr(l)), c, n)`2
-
-bubbling_counts_to_n: LEMMA
-		      FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
-		      	     bubbling_count(l, c, n)`2 = c + n
-
 bubbling_counts_n: LEMMA
 	 	   FORALL (l:list[nat], n:below[l`length]) (c:nat):
 		   	  bubbling_count(l, c, n)`2 = c + n
