@@ -60,15 +60,15 @@ ELSE LET aux = bubbling_count(cdr(l), count, n-1) IN
 ENDIF
 MEASURE n
 
-bubblesort_aux_count(lc:[list[nat],nat], (n:below[lc`1`length])) : RECURSIVE [list[nat],nat] =
-IF n = 0 THEN lc
-ELSE bubblesort_aux_count(bubbling_count(lc`1,lc`2,n), n-1)
+bubblesort_aux_count(l:list[nat], count:nat, (n:below[l`length])): RECURSIVE [list[nat],nat] =
+IF n = 0 THEN (l,count)
+ELSE LET aux = bubbling_count(l,count,n) IN bubblesort_aux_count(aux`1, aux`2, n-1)
 ENDIF
 MEASURE n
 
 bubblesort_count(l) : [list[nat],nat] = 
 IF null?(l) THEN (l,0)
-ELSE bubblesort_aux_count((l, 0), l`length-1)
+ELSE bubblesort_aux_count(l, 0, l`length-1)
 ENDIF
 
 
@@ -88,7 +88,7 @@ bubbling_equiv: LEMMA
 
 bubblesort_aux_equiv: LEMMA
 	FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
-		bubblesort_aux(l,n) = bubblesort_aux_count((l,c),n)`1
+		bubblesort_aux(l,n) = bubblesort_aux_count(l,c,n)`1
 
 
 bubblesort_equiv: LEMMA
