@@ -109,8 +109,10 @@ bubbling_linear: LEMMA
 		 	bubbling_count(l, c, n)`2 <= c + length(l)
 
 bubaux_counts_n2: LEMMA
-		  FORALL (l:list[nat] | NOT null?(l) ):
-		  bubblesort_aux_count(l, 0, length(l) - 1)`2 = (length(l) ^ 2 - length(l)) / 2
+		  FORALL (l:list[nat], n:below[l`length]) (c:nat):
+		  	 bubblesort_aux_count(l, c, n)`2 = c + ((n*n - n) / 2)
+%		  FORALL (l:list[nat] | NOT null?(l) ):
+%		  bubblesort_aux_count(l, 0, length(l) - 1)`2 = (length(l) ^ 2 - length(l)) / 2
 
 bubblesort_counts_n2: LEMMA
 		  FORALL (l:list[nat]):
