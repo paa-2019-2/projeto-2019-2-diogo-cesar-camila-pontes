@@ -1,13 +1,100 @@
 (bubblesort
  (bubbling_TCC1 0
-  (bubbling_TCC1-1 nil 3781979208 ("" (subtype-tcc) nil nil) nil nil
-   (bubbling subtype "bubblesort.l" "(list_adt[nat].cons?)")))
+  (bubbling_TCC1-1 nil 3783380760
+   ("" (induct l)
+    (("1" (skeep) (("1" (typepred n) (("1" (grind) nil nil)) nil)) nil)
+     ("2" (skeep) (("2" (skeep) nil nil)) nil))
+    nil)
+   ((length def-decl "nat" list_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (null adt-constructor-decl "(null?)" list_adt nil)
+    (null? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (list_induction formula-decl nil list_adt nil)
+    (number nonempty-type-decl nil numbers nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (cons? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (list2finseq const-decl "finseq[T]" list2finseq nil)
+    (finseq type-eq-decl nil finite_sequences nil)
+    (below type-eq-decl nil nat_types nil)
+    (< const-decl "bool" reals nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (list type-decl nil list_adt nil))
+   shostak (bubbling subtype "bubblesort.l" "(list_adt[nat].cons?)")))
  (bubbling_TCC2 0
-  (bubbling_TCC2-1 nil 3781979208 ("" (subtype-tcc) nil nil) nil nil
+  (bubbling_TCC2-1 nil 3781979208
+   ("" (induct l)
+    (("1" (skeep) (("1" (typepred n) (("1" (grind) nil nil)) nil)) nil)
+     ("2" (skeep)
+      (("2" (skeep) (("2" (typepred n) (("2" (grind) nil nil)) nil))
+        nil))
+      nil)
+     ("3" (skeep)
+      (("3" (skeep) (("3" (typepred n) (("3" (grind) nil nil)) nil))
+        nil))
+      nil))
+    nil)
+   ((cons adt-constructor-decl "[[T, list] -> (cons?)]" list_adt nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (length def-decl "nat" list_props nil)
+    (real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (null adt-constructor-decl "(null?)" list_adt nil)
+    (null? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (list_induction formula-decl nil list_adt nil)
+    (number nonempty-type-decl nil numbers nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (cdr adt-accessor-decl "[(cons?) -> list]" list_adt nil)
+    (list type-decl nil list_adt nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (< const-decl "bool" reals nil)
+    (below type-eq-decl nil nat_types nil)
+    (finseq type-eq-decl nil finite_sequences nil)
+    (list2finseq const-decl "finseq[T]" list2finseq nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (= const-decl "[T, T -> boolean]" equalities nil)
+    (cons? adt-recognizer-decl "[list -> boolean]" list_adt nil))
+   nil
    (bubbling subtype "list_adt[nat].cdr(bubblesort.l)"
     "(list_adt[nat].cons?)")))
  (bubbling_TCC3 0
-  (bubbling_TCC3-1 nil 3781979208 ("" (subtype-tcc) nil nil) nil nil
+  (bubbling_TCC3-1 nil 3783382733
+   ("" (subtype-tcc) (("" (postpone) nil nil)) nil) nil shostak
    (bubbling subtype "(number_fields.-)(bubblesort.n, 1)"
     "below[list2finseq[nat](cons[nat](car[nat](l), cdr[nat](cdr[nat](l))))`length]")))
  (bubbling_TCC4 0
@@ -38,7 +125,54 @@
     "bubblesort.bubblesort_aux(bubblesort.bubbling(bubblesort.l, bubblesort.n), (number_fields.-)(bubblesort.n, 1))"
     "nil")))
  (bubblesort_TCC1 0
-  (bubblesort_TCC1-1 nil 3781979208 ("" (subtype-tcc) nil nil) nil nil
+  (bubblesort_TCC1-1 nil 3781979208
+   ("" (induct l)
+    (("1" (flatten) nil nil)
+     ("2" (skeep)
+      (("2" (split)
+        (("1" (expand list2finseq)
+          (("1" (typepred cons2_var) (("1" (grind) nil nil)) nil)) nil)
+         ("2" (grind) nil nil))
+        nil))
+      nil))
+    nil)
+   ((real_lt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil)
+    (length def-decl "nat" list_props nil)
+    (nnint_plus_posint_is_posint application-judgement "posint"
+     integers nil)
+    (real_ge_is_total_order name-judgement "(total_order?[real])"
+     real_props nil)
+    (list_induction formula-decl nil list_adt nil)
+    (number nonempty-type-decl nil numbers nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (>= const-decl "bool" reals nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (< const-decl "bool" reals nil)
+    (list2finseq const-decl "finseq[T]" list2finseq nil)
+    (finseq type-eq-decl nil finite_sequences nil)
+    (below type-eq-decl nil nat_types nil)
+    (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
+    (numfield nonempty-type-eq-decl nil number_fields nil)
+    (null? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (list type-decl nil list_adt nil)
+    (int_minus_int_is_int application-judgement "int" integers nil))
+   nil
    (bubblesort subtype
     "(number_fields.-)(list2finseq[nat].list2finseq(bubblesort.l)`length, 1)"
     "below[list2finseq[nat](l)`length]")))
@@ -268,56 +402,7 @@
         nil))
       nil))
     nil)
-   ((pred type-eq-decl nil defined_types nil)
-    (well_founded? const-decl "bool" orders nil)
-    (nnint_plus_nnint_is_nnint application-judgement "nonneg_int"
-     integers nil)
-    (measure_induction formula-decl nil measure_induction nil)
-    (number nonempty-type-decl nil numbers nil)
-    (boolean nonempty-type-decl nil booleans nil)
-    (number_field_pred const-decl "[number -> boolean]" number_fields
-     nil)
-    (number_field nonempty-type-from-decl nil number_fields nil)
-    (real_pred const-decl "[number_field -> boolean]" reals nil)
-    (real nonempty-type-from-decl nil reals nil)
-    (rational_pred const-decl "[real -> boolean]" rationals nil)
-    (rational nonempty-type-from-decl nil rationals nil)
-    (integer_pred const-decl "[rational -> boolean]" integers nil)
-    (int nonempty-type-eq-decl nil integers nil)
-    (bool nonempty-type-eq-decl nil booleans nil)
-    (>= const-decl "bool" reals nil)
-    (nat nonempty-type-eq-decl nil naturalnumbers nil)
-    (list type-decl nil list_adt nil) (< const-decl "bool" reals nil)
-    (PRED type-eq-decl nil defined_types nil)
-    (every adt-def-decl "boolean" list_adt nil)
-    (AND const-decl "[bool, bool -> bool]" booleans nil)
-    (below type-eq-decl nil nat_types nil)
-    (finseq type-eq-decl nil finite_sequences nil)
-    (list2finseq const-decl "finseq[T]" list2finseq nil)
-    (naturalnumber type-eq-decl nil naturalnumbers nil)
-    (numfield nonempty-type-eq-decl nil number_fields nil)
-    (+ const-decl "[numfield, numfield -> numfield]" number_fields nil)
-    (length def-decl "nat" list_props nil)
-    (wf_nat formula-decl nil naturalnumbers nil)
-    (bubblesort_aux_count def-decl "[list[nat], nat]" bubblesort nil)
-    (bubblesort_aux def-decl "list[nat]" bubblesort nil)
-    (= const-decl "[T, T -> boolean]" equalities nil)
-    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
-    (NOT const-decl "[bool -> bool]" booleans nil)
-    (bubbling_equiv formula-decl nil bubblesort nil)
-    (real_lt_is_strict_total_order name-judgement
-     "(strict_total_order?[real])" real_props nil)
-    (int_plus_int_is_int application-judgement "int" integers nil)
-    (bubbling_length formula-decl nil bubblesort nil)
-    (bubbling_count def-decl "[list[nat], nat]" bubblesort nil)
-    (x_2 skolem-const-decl "below[list2finseq(x_1)`length]" bubblesort
-     nil)
-    (x_1 skolem-const-decl "list[nat]" bubblesort nil)
-    (- const-decl "[numfield, numfield -> numfield]" number_fields nil)
-    (int_minus_int_is_int application-judgement "int" integers nil)
-    (real_ge_is_total_order name-judgement "(total_order?[real])"
-     real_props nil))
-   shostak))
+   ((length def-decl "nat" list_props nil)) shostak))
  (bubblesort_equiv 0
   (bubblesort_equiv-1 nil 3782582192
    ("" (induct "l")
@@ -470,23 +555,9 @@
       nil))
     nil)
    nil shostak))
- (bubbling_linear 0
-  (bubbling_linear-1 nil 3783306693
-   ("" (skeep)
-    (("" (skeep)
-      (("" (lemma "bubbling_counts_n")
-        (("" (inst?)
-          (("" (typepred n)
-            (("" (expand list2finseq) (("" (assert) nil nil)) nil))
-            nil))
-          nil))
-        nil))
-      nil))
-    nil)
-   nil shostak))
  (bubaux_counts_n2_TCC1 0
   (bubaux_counts_n2_TCC1-1 nil 3783378374 ("" (subtype-tcc) nil nil)
-   nil nil
+   ((/= const-decl "boolean" notequal nil)) nil
    (bubaux_counts_n2 subtype "2"
     "{i: integers.int | booleans.OR(bubblesort.n /= 0, reals.>=(i, 0))}")))
  (bubaux_counts_n2 0
@@ -526,7 +597,8 @@
    ((length def-decl "nat" list_props nil)) shostak))
  (bubblesort_counts_n2_TCC1 0
   (bubblesort_counts_n2_TCC1-1 nil 3783309359
-   ("" (subtype-tcc) nil nil) nil nil
+   ("" (subtype-tcc) nil nil) ((/= const-decl "boolean" notequal nil))
+   nil
    (bubblesort_counts_n2 subtype "2"
     "{i: integers.int | booleans.OR(list_props[nat].length(bubblesort.l) /= 0, reals.>=(i, 0))}")))
  (bubblesort_counts_n2 0
