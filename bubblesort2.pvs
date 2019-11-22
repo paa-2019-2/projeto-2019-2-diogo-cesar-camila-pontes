@@ -73,6 +73,15 @@ ENDIF
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BUBBLING LENGTH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+bubbling_length: LEMMA
+		 FORALL (l:list[nat], n:below[l`length]) (c:nat):
+		 	length(bubbling_count(l,c,n)`1) = length(l)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% EQUIV
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -99,13 +108,9 @@ bubbling_counts_n: LEMMA
 	 	   FORALL (l:list[nat], n:below[l`length]) (c:nat):
 		   	  bubbling_count(l, c, n)`2 = c + n
 
-bubbling_linear: LEMMA
-	 	 FORALL (l:list[nat], n:below[l`length]) (c:nat):
-		 	bubbling_count(l, c, n)`2 <= c + length(l)
-
-bubbling_length: LEMMA
-		 FORALL (l:list[nat], n:below[l`length]) (c:nat):
-		 	length(bubbling_count(l,c,n)`1) = length(l)
+%bubbling_linear: LEMMA
+%	 	 FORALL (l:list[nat], n:below[l`length]) (c:nat):
+%		 	bubbling_count(l, c, n)`2 <= c + length(l)
 
 bubaux_counts_n2: LEMMA
 		  FORALL (l:list[nat], n:below[l`length]) (c:nat):
