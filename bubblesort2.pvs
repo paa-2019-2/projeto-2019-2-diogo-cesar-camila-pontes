@@ -9,6 +9,7 @@ BEGIN
 
 IMPORTING   sorting
 IMPORTING complexity
+IMPORTING weirdlength
 
 l,l1,l2 : VAR list[nat]
 i,j,k,n : VAR nat

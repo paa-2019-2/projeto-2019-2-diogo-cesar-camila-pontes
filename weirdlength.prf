@@ -1,0 +1,75 @@
+(weirdlength
+ (carcdrcdr_length_TCC1 0
+  (carcdrcdr_length_TCC1-1 nil 3783383389 ("" (subtype-tcc) nil nil)
+   nil nil
+   (carcdrcdr_length subtype "weirdlength.l" "(list_adt[nat].cons?)")))
+ (carcdrcdr_length_TCC2 0
+  (carcdrcdr_length_TCC2-1 nil 3783383593 ("" (subtype-tcc) nil nil)
+   nil nil
+   (carcdrcdr_length subtype "weirdlength.l" "(list_adt[nat].cons?)")))
+ (carcdrcdr_length_TCC3 0
+  (carcdrcdr_length_TCC2-1 nil 3783383389 ("" (subtype-tcc) nil nil)
+   nil nil
+   (carcdrcdr_length subtype "list_adt[nat].cdr(weirdlength.l)"
+    "(list_adt[nat].cons?)")))
+ (carcdrcdr_length 0
+  (carcdrcdr_length-1 nil 3783383391
+   ("" (measure-induct "length(l)" "l")
+    (("1" (skeep)
+      (("1" (expand length 1)
+        (("1" (expand length 1 1) (("1" (assert) nil nil)) nil)) nil))
+      nil)
+     ("2" (skeep)
+      (("2" (skeep)
+        (("2" (expand length)
+          (("2" (expand length 3 1) (("2" (assert) nil nil)) nil))
+          nil))
+        nil))
+      nil)
+     ("3" (skeep)
+      (("3" (skeep)
+        (("3" (expand length 3)
+          (("3" (expand length 3 1) (("3" (assert) nil nil)) nil))
+          nil))
+        nil))
+      nil))
+    nil)
+   ((pred type-eq-decl nil defined_types nil)
+    (well_founded? const-decl "bool" orders nil)
+    (IMPLIES const-decl "[bool, bool -> bool]" booleans nil)
+    (measure_induction formula-decl nil measure_induction nil)
+    (number nonempty-type-decl nil numbers nil)
+    (list type-decl nil list_adt nil)
+    (boolean nonempty-type-decl nil booleans nil)
+    (bool nonempty-type-eq-decl nil booleans nil)
+    (PRED type-eq-decl nil defined_types nil)
+    (every adt-def-decl "boolean" list_adt nil)
+    (AND const-decl "[bool, bool -> bool]" booleans nil)
+    (number_field_pred const-decl "[number -> boolean]" number_fields
+     nil)
+    (number_field nonempty-type-from-decl nil number_fields nil)
+    (real_pred const-decl "[number_field -> boolean]" reals nil)
+    (real nonempty-type-from-decl nil reals nil)
+    (rational_pred const-decl "[real -> boolean]" rationals nil)
+    (rational nonempty-type-from-decl nil rationals nil)
+    (integer_pred const-decl "[rational -> boolean]" integers nil)
+    (>= const-decl "bool" reals nil)
+    (int nonempty-type-eq-decl nil integers nil)
+    (nat nonempty-type-eq-decl nil naturalnumbers nil)
+    (NOT const-decl "[bool -> bool]" booleans nil)
+    (null? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (cons? adt-recognizer-decl "[list -> boolean]" list_adt nil)
+    (cdr adt-accessor-decl "[(cons?) -> list]" list_adt nil)
+    (naturalnumber type-eq-decl nil naturalnumbers nil)
+    (length def-decl "nat" list_props nil)
+    (< const-decl "bool" reals nil)
+    (wf_nat formula-decl nil naturalnumbers nil)
+    (> const-decl "bool" reals nil)
+    (cons adt-constructor-decl "[[T, list] -> (cons?)]" list_adt nil)
+    (car adt-accessor-decl "[(cons?) -> T]" list_adt nil)
+    (posint_plus_nnint_is_posint application-judgement "posint"
+     integers nil)
+    (real_gt_is_strict_total_order name-judgement
+     "(strict_total_order?[real])" real_props nil))
+   shostak)))
+
