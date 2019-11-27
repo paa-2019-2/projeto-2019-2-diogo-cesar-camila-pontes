@@ -21,9 +21,9 @@ l,l1,l2 : VAR list[nat]
 i,j,k,n : VAR nat
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%% BUBBLING (ORIGINAL) 
-%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% BUBBLING (ORIGINAL)
+%%%%%%%%%%%%%%%%%%%%%%%
 
 % This is the bubbling function that moves the greates key in
 % the n-prefix of a list l to the n-th position of the list. 
@@ -79,9 +79,9 @@ bubbling_counts_n: LEMMA
 		   	  bubbling_count(l, c, n)`2 = c + n
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% BUBBLING AUX (ORIGINAL)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% BUBBLESORT AUX (ORIGINAL)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % This is the auxiliary function that calls bubbling addequately
 % starting from n. The result is that the first n+1 elements of the
@@ -123,9 +123,9 @@ bubaux_counts_n2: LEMMA
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% BUBBLESORT (ORIGINAL)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % This is the main function which calls the auxiliary function
 % bubblesort_aux starting from length of the input list minus one.  
