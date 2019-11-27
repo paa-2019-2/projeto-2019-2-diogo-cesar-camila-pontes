@@ -9,6 +9,7 @@ BEGIN
 
 IMPORTING   sorting
 IMPORTING complexity
+IMPORTING weirdlength
 
 l,l1,l2 : VAR list[nat]
 i,j,k,n : VAR nat
@@ -80,10 +81,6 @@ bubbling_length: LEMMA
 		 FORALL (l:list[nat], n:below[l`length]) (c:nat):
 		 	length(bubbling_count(l,c,n)`1) = length(l)
 
-carcdrcdr_length : LEMMA
-		 FORALL(l:list[nat] | NOT null?(l) AND NOT null?(cdr(l))):
-		 length(l) > length(cons(car(l), cdr(cdr(l))))
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% EQUIV
@@ -111,6 +108,10 @@ bubblesort_equiv: LEMMA
 bubbling_counts_n: LEMMA
 	 	   FORALL (l:list[nat], n:below[l`length]) (c:nat):
 		   	  bubbling_count(l, c, n)`2 = c + n
+
+%bubbling_linear: LEMMA
+%	 	 FORALL (l:list[nat], n:below[l`length]) (c:nat):
+%		 	bubbling_count(l, c, n)`2 <= c + length(l)
 
 bubaux_counts_n2: LEMMA
 		  FORALL (l:list[nat], n:below[l`length]) (c:nat):
