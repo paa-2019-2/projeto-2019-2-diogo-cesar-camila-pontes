@@ -1,8 +1,15 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Grupo de Teoria da Computacao, Universidade de Brasilia
 %%% M. Ayala-Rincon, Flavio L.C. de Moura
-%%% Last modification:  April 28 2015
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Last modification:  April 28 2015 (Original bubbling functions)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Projeto da disciplina Projeto e Análise de Algoritmos
+%%% Camila F. T. Pontes
+%%% Diogo C. Ferreira
+%%% Last modification:  November 27 2019 (counting functions and lemmas)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 bubblesort : THEORY
 BEGIN
@@ -27,9 +34,21 @@ ELSE cons(car(l), bubbling(cdr(l), n - 1))
 ENDIF
 MEASURE n
 
-%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% BUBBLING
-%%%%%%%%%%%%%%%%%%%%%%%%
+%%% bubbling_count: is a copy of the bubbling function but with an additional
+%%%                 parameter "count" which tracks the number of comparisons
+%%%                 made by the algorithm, and is returned along the input
+%%%                 list as a pair (l,count)
+%%%
+%%% bubbling_equiv: lemma of equivalence between bubbling and bubbling_count
+%%%
+%%% bubbling_length: lemma that states that bubbling_count does not change the
+%%%                  input list length
+%%%
+%%% bubbling_counts_n: lemma that states that bubbling_count performs exactly
+%%%                    n comparisons, and therefore has linear complexity
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 bubbling_count(l:list[nat], count:nat, (n:below[l`length])) : RECURSIVE  [list[nat],nat] =
 IF n = 0 THEN (l,count)
@@ -65,7 +84,7 @@ bubbling_counts_n: LEMMA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % This is the auxiliary function that calls bubbling addequately
-%t starting from n. The result is that the first n+1 elements of the
+% starting from n. The result is that the first n+1 elements of the
 % given input list will be sorted. 
 bubblesort_aux(l, ( n : below[l`length ] )) : RECURSIVE list[nat] =
 IF n = 0 THEN l
@@ -73,10 +92,19 @@ ELSE bubblesort_aux(bubbling(l, n), n-1)
 ENDIF
 MEASURE n
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% BUBBLING AUX
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% bubblesort_aux_count: is a copy of the bubblesort_aux function but with an
+%%%                       additional parameter "count" which tracks the number
+%%%                       of comparisons returned by bubbling_count
+%%%                       
+%%% bubblesort_aux_equiv: lemma of equivalence between bubblesort_aux and
+%%%                       bubblesort_aux_count
+%%%                       
+%%% bubaux_counts_n2: lemma that states that bubblesort_aux_count performs
+%%%                   exactly (n*(n+1))/2 comparisons, and therefore has
+%%%                   quadratic complexity
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 bubblesort_aux_count(l:list[nat], count:nat, (n:below[l`length])): RECURSIVE [list[nat],nat] =
 IF n = 0 THEN (l,count)
@@ -108,9 +136,18 @@ ELSE bubblesort_aux(l, l`length - 1 )
 ENDIF
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% BUBBLESORT
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% bubblesort_count: is a copy of the bubblesort function but also returns the
+%%%                   number of comparisons made by the algorithm returned by
+%%%                   bubblesort_aux
+%%%                       
+%%% bubblesort_equiv: lemma of equivalence between bubblesort and bubblesort
+%%%                       
+%%% bubblesort_counts_n2: lemma that states that bubblesort performs exactly
+%%%                       (n*(n-1))/2 comparisons, where n is the length of the
+%%%                       input list, and therefore has quadratic complexity
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 bubblesort_count(l) : [list[nat],nat] = 
 IF null?(l) THEN (l,0)
