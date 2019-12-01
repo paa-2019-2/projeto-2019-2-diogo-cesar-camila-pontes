@@ -1,0 +1,52 @@
+\subsubsection{Funções auxiliares}
+
+Para a realização da análise assintótica do Bubblesort,
+inicialmente foram definidas três funções auxiliares
+com o objetivo de rastrear as contagens do número total
+de comparações realizadas pelo algoritmo após retornar
+a lista ordenada.
+
+\begin{itemize}
+\item \texttt{bubbling\_count}: recebe uma lista $l$, um
+natural $n$ (equivalentes aos parâmetros da função
+\texttt{bubbling} original) e um contador $count$, que é
+incrementando quando alguma comparação for realizada.
+Seu valor de retorno é o par $(l, count)$ com a lista e
+o contador devidamente atualizados.
+\item \texttt{bubblesort\_aux\_count}: recebe uma lista $l$,
+um natural $n$ (equivalentes aos parâmetros da função
+\texttt{bubblesort\_aux} original) e um contador $count$,
+que é passado para a função \texttt{bubbling\_count}
+chamada internamente. Seu valor de retorno é o par
+$(l, count)$ com a lista e o contador devidamente
+atualizados.
+\item \texttt{bubblesort\_count}: recebe uma lista $l$,
+um natural $n$, equivalentes aos parâmetros da função
+\texttt{bubblesort} original. Ela chama
+\texttt{bubblesort\_aux\_count} da mesma forma que
+\texttt{bubblesort} chama \texttt{bubblesort\_aux},
+mas com o parâmetro do contador iniciando em 0. Seu valor
+de retorno é o par $(l, count)$ com a lista ordenada
+e o contador atualizados com o número total de comparações
+realizadas pelo algoritmo.
+\end{itemize}
+
+\subsubsection{Lemas}
+Lemas utilizados na prova da complexidade de \texttt{bubbling\_count}:
+\begin{itemize}
+    \item \texttt{bubbling\_equiv}: atesta a equivalência entre \texttt{bubbling} e \texttt{bubbling\_count}
+    \item \texttt{bubbling\_length}: afirma que a função \texttt{bubbling\_count} não altera o tamanho da lista de entrada
+    \item \texttt{bubbling\_counts\_n}: afirma que \texttt{bubbling\_count} realiza exatamente $n$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é linear
+\end{itemize}
+Lemas utilizados na prova da complexidade de \texttt{bubblesort\_aux\_count}:
+\begin{itemize}
+    \item \texttt{bubblesort\_aux\_equiv}: atesta a equivalência entre \texttt{bubblesort\_aux} e \texttt{bubblesort\_aux\_count}
+    \item \texttt{bubblesort\_counts\_n2}: afirma que \texttt{bubblesort\_aux\_count} realiza exatamente $n(n+1)/2$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é quadrática
+\end{itemize}
+Lemas utilizados na prova da complexidade de \texttt{bubblesort\_count}:
+\begin{itemize}
+    \item \texttt{bubblesort\_equiv}: atesta a equivalência entre \texttt{bubblesort} e \texttt{bubblesort\_count}
+    \item \texttt{bubblesort\_counts\_n2}: afirma que \texttt{bubblesort\_count} realiza exatamente $n(n-1)/2$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é linear
+\end{itemize}
+
+

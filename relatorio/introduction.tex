@@ -1,0 +1,40 @@
+\indent \indent O problema de ordenação de sequências numéricas surge frequentemente em aplicações computacionais. Este problema pode ser definido formalmente da seguinte maneira \cite{cormen2009introduction}:
+\begin{itemize}
+    \item \textbf{Entrada:} uma sequência de $n$ números, $a_1, a_2, ..., a_n$
+    \item \textbf{Saída:} uma permutação (reordenação) da sequência de entrada, $a'_1, a'_2,...,a'_n$ tal que $a'_1 \leq a'_2 \leq ... \leq a'_n$ 
+\end{itemize}
+
+Existem diversos algoritmos de ordenação que resolvem o problema apresentado acima, \textit{e.g.} \textit{insertion sort}, \textit{selection sort}, \textit{merge sort}, \textit{quicksort}, dentre outros. Neste trabalho, vamos analisar um dos algoritmos de ordenação mais simples, o \textit{bubblesort}. A ideia geral do \textit{bubblesort} é percorrer diversas vezes o vetor de entrada e, a cada passagem, mover para o final da porção ainda não ordenada o maior elemento. Uma implementação recursiva desse algoritmo é apresentada a seguir (Algoritmo \ref{algo:bubblesort}).
+
+\begin{algorithm}[!h]
+    \begin{algorithmic}[1]
+        \Function{bubblesort}{int array $A$, int $n$}
+            \If{n = 1}
+                \State \Return
+            \EndIf
+            \For{$i \leftarrow 1$ to $n-1$}
+                \If{$A[i] > A[i+1]$}
+                    \State swap($A[i], A[i+1]$)
+                \EndIf
+            \EndFor
+            \State bubblesort($A$,$n-1$)
+            
+        
+        \EndFunction
+    \end{algorithmic}\vspace{-2pt}
+    \caption{Implementação recursiva do \textit{bubblesort}}
+    \label{algo:bubblesort}
+\end{algorithm}
+
+Uma das formas de comparar o desempenho do \textit{bubblesort} com o desempenho de outros algoritmos de ordenação é através de uma análise de complexidade.
+A complexidade do \textit{bubblesort} é de ordem quadrática ($O(n^2)$), \textit{i.e.}, no pior caso, são feitas $n^2$ trocas durante a ordenação, onde $n$ é o número de elementos do vetor de entrada.
+Neste trabalho, um assistente de prova será utilizado para provar a complexidade do \textit{bubblesort}. 
+A prova será realizada utilizando o \textit{Prototype Verification System} (PVS) \cite{owre1992pvs}. \\
+
+Os principais objetivos deste trabalho são:
+\begin{itemize}
+    \item Implementar uma versão recursiva do \textit{bubblesort} com um contador para o número de trocas realizadas durante a ordenação;
+    \item Provar a complexidade assintótica do \textit{bubblesort} utilizando o PVS.
+\end{itemize}
+
+%Na próxima seção, será realizada uma apresentação detalhada do problema.
