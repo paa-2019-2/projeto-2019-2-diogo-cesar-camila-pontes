@@ -1,4 +1,17 @@
-Neste trabalho, foi realizada uma prova assistida da complexidade quadrática do algoritmo de ordenação \textit{bubblesort} utilizando o PVS.
-A prova foi realizada de forma indireta, mostrando que a contagem do número de trocas realizadas por uma implementação recursiva do algoritmo \textit{bubblesort} é igual a uma função quadrática do tamanho da lista de entrada.
-Além disso, foi mostrado que a função \textit{bubblesort} é equivalente à sua versão com adição do contador do número de trocas. 
-Portanto, concluímos que o algoritmo \textit{bubblesort} possui complexidade assintótica $O(n^2)$.
+Neste trabalho, foi realizada uma prova assistida da complexidade quadrática do algoritmo de ordenação \textit{bubblesort} utilizando o PVS. A prova foi realizada analisando uma contagem do número
+de comparações realizadas por uma implementação recursiva do algoritmo \textit{bubblesort},
+através da função implementada \texttt{bubblesort\_count}, que depende da prova de complexidade
+das funções internas que são chamadas por ela, \textit{bubblesort\_aux} e \textit{bubbling}.
+
+Notamos que, embora
+as provas destas duas seja em função do parâmetro $n$, ao serem chamadas por \textit{bubblesort}
+sabemos exatamente o valor inicial de $n$ que será passado para elas como argumento. Por
+este motivo, foi possível concluir a prova final da complexidade de \textit{bubblesort} em
+função do comprimento da lista de entrada, $|l|$.
+
+Por fim, foi mostrado também que a implementação do \textit{bubblesort} com o contador é equivalente
+à sua versão com adição do contador do número de trocas. Sendo assim, concluímos que o algoritmo
+\textit{bubblesort} possui complexidade assintótica $\theta(|l|^2)$, uma vez que obtivemos
+que ele realiza exatamente $\frac{|l|^2 - |l|}{2}$ operações de comparação.
+
+

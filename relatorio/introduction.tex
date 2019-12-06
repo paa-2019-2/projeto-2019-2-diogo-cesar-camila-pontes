@@ -1,4 +1,4 @@
-\indent \indent O problema de ordenação de sequências numéricas surge frequentemente em aplicações computacionais. Este problema pode ser definido formalmente da seguinte maneira \cite{cormen2009introduction}:
+O problema de ordenação de sequências numéricas surge frequentemente em aplicações computacionais. Este problema pode ser definido formalmente da seguinte maneira \cite{cormen2009introduction}:
 \begin{itemize}
     \item \textbf{Entrada:} uma sequência de $n$ números, $a_1, a_2, ..., a_n$
     \item \textbf{Saída:} uma permutação (reordenação) da sequência de entrada, $a'_1, a'_2,...,a'_n$ tal que $a'_1 \leq a'_2 \leq ... \leq a'_n$ 
@@ -12,7 +12,7 @@ Existem diversos algoritmos de ordenação que resolvem o problema apresentado a
             \If{n = 1}
                 \State \Return
             \EndIf
-            \For{$i \leftarrow 1$ to $n-1$}
+            \For{$i \leftarrow 0$ to $n-1$}
                 \If{$A[i] > A[i+1]$}
                     \State swap($A[i], A[i+1]$)
                 \EndIf

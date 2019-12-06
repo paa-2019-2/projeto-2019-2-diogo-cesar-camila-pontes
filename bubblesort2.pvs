@@ -70,7 +70,7 @@ bubbling_equiv: LEMMA
 	FORALL (l:list[nat]) (n:below[l`length]) (c:nat):
 		bubbling(l,n) = bubbling_count(l,c,n)`1
 
-bubbling_length: LEMMA
+		bubbling_length: LEMMA
 		 FORALL (l:list[nat], n:below[l`length]) (c:nat):
 		 	length(bubbling_count(l,c,n)`1) = length(l)
 

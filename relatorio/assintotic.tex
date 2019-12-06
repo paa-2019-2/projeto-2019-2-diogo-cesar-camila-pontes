@@ -1,4 +1,14 @@
-\subsubsection{Funções auxiliares}
+
+O problema em questão consiste na análise da complexidade
+assintótica do algoritmo Bubblesort. A resolução proposta
+foi decomposta em três partes: na elaboração de funções
+auxiliares que possibilitem a realização da análise;
+na elaboração e prova de lemas que dizem respeito a análise
+da complexidade do algoritmo; e por fim, na elaboração e prova
+de lemas que garantam a equivalência entre as funções auxiliares
+e as funções originalmente implementadas.
+
+\subsection{Funções auxiliares}
 
 Para a realização da análise assintótica do Bubblesort,
 inicialmente foram definidas três funções auxiliares
@@ -31,22 +41,44 @@ e o contador atualizados com o número total de comparações
 realizadas pelo algoritmo.
 \end{itemize}
 
-\subsubsection{Lemas}
-Lemas utilizados na prova da complexidade de \texttt{bubbling\_count}:
-\begin{itemize}
-    \item \texttt{bubbling\_equiv}: atesta a equivalência entre \texttt{bubbling} e \texttt{bubbling\_count}
-    \item \texttt{bubbling\_length}: afirma que a função \texttt{bubbling\_count} não altera o tamanho da lista de entrada
-    \item \texttt{bubbling\_counts\_n}: afirma que \texttt{bubbling\_count} realiza exatamente $n$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é linear
-\end{itemize}
-Lemas utilizados na prova da complexidade de \texttt{bubblesort\_aux\_count}:
-\begin{itemize}
-    \item \texttt{bubblesort\_aux\_equiv}: atesta a equivalência entre \texttt{bubblesort\_aux} e \texttt{bubblesort\_aux\_count}
-    \item \texttt{bubblesort\_counts\_n2}: afirma que \texttt{bubblesort\_aux\_count} realiza exatamente $n(n+1)/2$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é quadrática
-\end{itemize}
-Lemas utilizados na prova da complexidade de \texttt{bubblesort\_count}:
-\begin{itemize}
-    \item \texttt{bubblesort\_equiv}: atesta a equivalência entre \texttt{bubblesort} e \texttt{bubblesort\_count}
-    \item \texttt{bubblesort\_counts\_n2}: afirma que \texttt{bubblesort\_count} realiza exatamente $n(n-1)/2$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é linear
-\end{itemize}
+\subsection{Lemas}
 
+Como o objetivo é a análise da complexidade assintótica do algoritmo Bubblesort,
+dividimos a análise com base nas funções que compõem a implementação. Para cada
+uma das unções auxiliares elaboramos ao menos dois lemas: um para analisar seu
+comportamento assintótico e um segundo para garantir sua equivalência com a
+função correspondente original.
+
+\hspace{0.27cm} Lemas utilizados na prova da complexidade de \texttt{bubbling\_count}:
+\begin{enumerate}
+    \item \label{lemma:bcount} \texttt{bubbling\_counts\_n}: afirma que \texttt{bubbling\_count} realiza exatamente $n$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é linear
+    \item \label{lemma:bequiv} \texttt{bubbling\_equiv}: afirma que \texttt{bubbling} e \texttt{bubbling\_count} são equivalentes
+    \item \label{lemma:blen} \texttt{bubbling\_length}: afirma que a função \texttt{bubbling\_count} não altera o tamanho da lista de entrada
+
+\vspace{1cm}
+Lemas utilizados na prova da complexidade de \texttt{bubblesort\_aux\_count}:
+
+    \item \label{lemma:bacount} \texttt{bubaux\_counts\_n2}: afirma que \texttt{bubblesort\_aux\_count} realiza exatamente $n(n+1)/2$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é quadrática
+    \item \label{lemma:baequiv} \texttt{bubblesort\_aux\_equiv}: afirma que \texttt{bubblesort\_aux} e \texttt{bubblesort\_aux\_count} são equivalentes
+
+\vspace{1cm}
+Lemas utilizados na prova da complexidade de \texttt{bubblesort\_count}:
+
+    \item \label{lemma:bscount} \texttt{bubblesort\_counts\_n2}: afirma que \texttt{bubblesort\_count} realiza exatamente $n(n-1)/2$ comparações, onde $n$ é o tamanho da lista de entrada, e que, portanto, sua complexidade é quadrática
+    \item \label{lemma:bsequv} \texttt{bubblesort\_equiv}: afirma que \texttt{bubblesort} e \texttt{bubblesort\_count} são equivalentes
+\end{enumerate}
+
+\subsection{Análise assintótica}
+
+As provas podem ser verificadas por completo através do PVS a partir
+dos arquivos que acompanham este projeto. O arquivo \texttt{bubblesort2.pvs}
+contem a implementação das funções originais fornecidas pelo professor da
+disciplina, bem como a implementação das funções auxiliares e dos lemas
+elaborados pelo grupo. Apresentaremos a seguir um detalhamento dos pontos que
+consideramos fundamentais na realização das provas. Adotaremos a seguinte notação
+para as fórmulas nesta Seção: se $l$ é uma lista, $|l|$ indica o seu comprimento.
+O $i$-ésimo elemento de $l$ é dado por $l_i$ e uma lista $l_i:l'_i$ possui o
+elemento $l_i$ na cabeça e a lista $l'_i$ na cauda.
+Analogamente, $P_i$ denota o $i$-ésimo elemento de um par ordenado $P=(a,b)$ e
+$f(x)_i$ o $i$-ésimo elemento de uma função $f(x)=(a,b)$ que retorna um par.
 

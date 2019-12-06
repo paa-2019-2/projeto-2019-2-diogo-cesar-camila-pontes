@@ -8,6 +8,21 @@
 \usepackage{color}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{float}
+
+\lstset{
+    basicstyle=
+    \fontencoding{T1}
+    \fontfamily{lmtt}
+    \fontseries{lc}
+    \selectfont
+}
+
+\newcommand{\HI}{\textit{h.i.}}
+
 
 \title{{\large Universidade de Brasília \\ Instituto de Ciências Exatas \\
 Departamento de Ciência da Computação} \\[1cm]
@@ -24,14 +39,15 @@ Relatório sobre {\\ \bf Complexidade do Bubblesort}}
 \input{introduction.tex}
 
 \section{Apresentação do Problema}
-
-\subsection{Análise assintótica}
 \input{assintotic.tex}
-
-%\subsection{Correção da solução proposta}
+\input{bubbling.tex}
+\input{bubblesort_aux.tex}
+\input{bubblesort.tex}
 
 \section{Conclusão}
 \input{conclusion.tex}
+
+\clearpage
 
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
@@ -43,4 +59,3 @@ Relatório sobre {\\ \bf Complexidade do Bubblesort}}
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
-
